@@ -1,11 +1,9 @@
-import { useLoader } from '@react-three/fiber';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { Html } from '@react-three/drei';
 import { useRef } from 'react';
 import { useSpring, animated } from '@react-spring/three';
 import { useEffect } from 'react';
 
-export default function Model() {
+export default function Model({ arcade }) {
 	const arcadeRef = useRef();
 	const [spring, setSpring] = useSpring(() => ({
 		position: [0, 0, 0],
@@ -34,8 +32,6 @@ export default function Model() {
 			});
 		}, 2500);
 	}, []);
-
-	const arcade = useLoader(GLTFLoader, './models/pacman_arcade__animation.glb');
 
 	return (
 		<animated.primitive

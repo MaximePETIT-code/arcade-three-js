@@ -3,10 +3,15 @@ import { useGLTF } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import Experience from './Experience.js';
 import Loader from './Loader';
+import { useLoader } from '@react-three/fiber';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 function App() {
 	const [finished, setFinished] = useState(false);
 	const [loaded, setLoaded] = useState(false);
+
+	const arcade = useLoader(GLTFLoader, './models/pacman_arcade__animation.glb');
+	useGLTF.preload('./models/pacman_arcade__animation.glb');
 
 	return (
 		<>
@@ -25,7 +30,7 @@ function App() {
 						position: [-3, 1.5, 4],
 					}}
 				>
-					<Experience />
+					<Experience arcade={arcade} />
 				</Canvas>
 			)}
 		</>
@@ -33,5 +38,3 @@ function App() {
 }
 
 export default App;
-
-useGLTF.preload('./models/pacman_arcade__animation.glb');

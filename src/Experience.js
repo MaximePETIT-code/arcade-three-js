@@ -5,7 +5,7 @@ import {
 } from '@react-three/drei';
 import Model from './Model';
 
-export default function Experience() {
+export default function Experience({ arcade }) {
 	return (
 		<>
 			<color args={['#695b5b']} attach="background" />
@@ -18,7 +18,7 @@ export default function Experience() {
 				azimuth={[-0.3, 0.35]}
 				config={{ mass: 2, tension: 400 }}
 			>
-				<Model />
+				<Model arcade={arcade} />
 			</PresentationControls>
 
 			<ContactShadows position-y={-1.9} opacity={0.4} scale={5} blur={2.4} />
